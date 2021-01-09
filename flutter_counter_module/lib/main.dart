@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter/services.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -45,7 +47,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  static MethodChannel methodChannel =
+      MethodChannel('samples.flutter.io/battery');
+  void _incrementCounter() async {
+    String result = await methodChannel.invokeMethod('getBatteryLevel');
+    print("object");
+    print(result);
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
