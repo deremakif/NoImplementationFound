@@ -1,2 +1,13 @@
 include ':app'
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+  settingsDir,
+  '../flutter_counter_module/.android/include_flutter.groovy'
+))
 rootProject.name = "loginApp"
+
+include ':flutter_counter_module'
+project(':flutter_counter_module').projectDir = new File('../flutter_counter_module')
+
+include ':flutter_counter_module'
+project(':flutter_counter_module').projectDir = new File('../flutter_counter_module')

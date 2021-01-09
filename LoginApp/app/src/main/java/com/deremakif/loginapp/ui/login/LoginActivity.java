@@ -26,6 +26,8 @@ import com.deremakif.loginapp.R;
 import com.deremakif.loginapp.ui.login.LoginViewModel;
 import com.deremakif.loginapp.ui.login.LoginViewModelFactory;
 
+import io.flutter.embedding.android.FlutterActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
@@ -112,9 +114,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                startActivity(
+                        FlutterActivity.createDefaultIntent(getApplicationContext())
+                );
             }
         });
     }
